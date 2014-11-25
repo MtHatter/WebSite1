@@ -69,17 +69,13 @@ window.onload = function () {
         // シーン メインループ //
         tmpScene.addEventListener(Event.ENTER_FRAME, function () {
             // 過去の加速度 //
-            var oldAcc = this.mInput.GetAccelerationX();
-            if (oldAcc < 0) {
-                oldAcc = 0;
-            }
+            var oldAcc = Math.abs(this.mInput.GetAccelerationX()) +Math.abs(this.mInput.GetAccelerationY());
+            
             // 入力更新 //
             this.mInput.Update();
             // 現在の加速度 //
-            var newAcc = this.mInput.GetAccelerationX();
-            if (newAcc < 0) {
-                newAcc = 0;
-            }
+            var newAcc = Math.abs(this.mInput.GetAccelerationX()) + Math.abs(this.mInput.GetAccelerationY());
+            
             // ラベル更新 //
             this.mAccelerationLabel.text = newAcc;
 
